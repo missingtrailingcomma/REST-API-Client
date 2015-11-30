@@ -1,4 +1,5 @@
-var http = require('http');
+// var http = require('http');
+var http = require('follow-redirects').http;
 
 var resArea = document.querySelector('.HTTP-res .res-content');
 
@@ -7,9 +8,16 @@ var processHTTPRequest = function (e) {
 
   var url = document.querySelector('.req-url').value;
   var method = document.querySelector('.req-method').value;
-  var urlDelimiterIndex = url.indexOf('/');
-  var host = url.slice(0, urlDelimiterIndex);
-  var path = url.slice(urlDelimiterIndex);
+  var urlDelimiterIndex = url.indexOf('/', url.indexOf('//') + 2);
+  var host;
+  var path;
+  if (urlDelimiterIndex > -1) {
+    host = url.slice(0, urlDelimiterIndex);
+    path = url.slice(urlDelimiterIndex);
+  } else {
+    host = url;
+    path = '';
+  }
 
   http.request({
     host: host,
@@ -23,8 +31,17 @@ var processHTTPRequest = function (e) {
     });
 
     res.on('end', function () {
-      console.log(str);
-      resArea.innerHTML = str;
+      // either HTML/XML or JSON
+      if (str[0] && str[0] !== '[' && str[0] !== '{') {
+        // convert < and > to HTML Entities
+        str = String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        resArea.innerHTML = '<pre><code class="html">' + str + '</code></pre>';
+        hljs.highlightBlock(resArea);
+      } else {
+        resArea.innerHTML = '<pre><code class="json">' + str + '</code></pre>';
+        hljs.highlightBlock(resArea);
+      }
+
     });
   }).end();
 
