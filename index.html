@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<header>
+
+	</header>
+	<main>
+		<div class="HTTP-req">
+			<form class="form-horizontal">
+				<div class="col-sm-9">
+					<input type="text" class="form-control req-url" placeholder="http://">
+				</div>
+				<div class="col-sm-2">
+					<select class="form-control req-method">
+						<option value="GET" selected>GET</option>
+						<option value="PUT">PUT</option>
+						<option value="POST">POST</option>
+						<option value="DELETE">DELETE</option>
+					</select>
+				</div>
+				<div class="col-sm-1 center-child">
+					<button type="submit" class="btn btn-primary col-sm-12">GO</button>
+				</div>
+			</form>
+		</div>
+		<hr>
+		<div class="HTTP-res">
+			<ul class="nav nav-pills">
+				<li role="presentation"><a href="">Respond Header</a></li>
+				<li role="presentation" class="active"><a href="">Respond Body</a></li>
+			</ul>
+			<div class="res-content">
+			</div>
+		</div>
+	</main>
+	<script src="index.js"></script>
+</body>
+</html>

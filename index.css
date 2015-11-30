@@ -1,0 +1,27 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.center-child {
+  text-align: center;
+}
+
+.HTTP-req {
+  overflow: auto;
+}
+
+.col-sm-9,
+.col-sm-2,
+.col-sm-1 {
+  padding: 0 5px;
+}
+
+.HTTP-req {
+  margin: 20px 0;
+}
